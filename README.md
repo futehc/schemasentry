@@ -37,9 +37,8 @@ curl -s -X POST "https://target-site/graphql" \
 
 ## Run Audit
 
-...bash
 python schemasentry.py schema.json
-...
+
 
 ## Review the Results
 
