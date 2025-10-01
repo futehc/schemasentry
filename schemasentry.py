@@ -4,7 +4,7 @@ GraphQL Schema Static Audit Script
 Author: Mitch
 Purpose: Analyze a GraphQL introspection JSON (schema.json) for potential "juicy" or risky schema elements.
          Flags suspicious mutations, sensitive field/arg names, Upload scalar, free-text filters, deprecated items.
-Usage: python graphql_schema_audit.py schema.json
+Usage: python schemasentry.py schema.json
 Output: schema_audit_report.txt (detailed), console summary
 """
 
