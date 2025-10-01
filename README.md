@@ -1,4 +1,4 @@
-# 🛡️ SchemaSentry
+# SchemaSentry
 **GraphQL Schema Static Audit Tool**
 
 SchemaSentry is a lightweight Python tool for **static auditing of GraphQL schemas**.  
@@ -14,7 +14,7 @@ The goal is to help security testers quickly spot **“juicy” schema elements*
 
 ---
 
-## ⚡ Features
+## Features
 - Detects risky mutation verbs  
 - Flags sensitive fields & arguments  
 - Identifies file-upload capability  
@@ -24,7 +24,7 @@ The goal is to help security testers quickly spot **“juicy” schema elements*
 
 ---
 
-## 💡 How to Use
+## How to Use
 
 ### 1. Dump the GraphQL Schema
 If introspection is enabled, you can retrieve the schema with a curl command:
@@ -35,3 +35,13 @@ curl -s -X POST "https://target-site/graphql" \
   -d '{"query":"query IntrospectionQuery { __schema { queryType { name } mutationType { name } subscriptionType { name } types { ...FullType } directives { name description locations args { ...InputValue } } } } fragment FullType on __Type { kind name description fields(includeDeprecated: true) { name description args { ...InputValue } type { ...TypeRef } isDeprecated deprecationReason } inputFields { ...InputValue } interfaces { ...TypeRef } enumValues(includeDeprecated: true) { name description isDeprecated deprecationReason } possibleTypes { ...TypeRef } } fragment InputValue on __InputValue { name description type { ...TypeRef } defaultValue } fragment TypeRef on __Type { kind name ofType { kind name ofType { kind name ofType { kind name ofType { kind name } } } } }"}' \
   > schema.json
 
+## Run Audit
+
+...bash
+python schemasentry.py schema.json
+...
+
+## Review the Results
+
+Console summary of suspicious findings
+Full detailed report in schema_audit_report.txt
